@@ -4,8 +4,14 @@ export function fetchQuestions() {
   return(dispatch) => {
     dispatch({type: 'LOADING_QUESTIONS'});
     return fetch('/questions').then(response => response.json()).then(data => {
-      debugger;
       dispatch({type: 'FETCH_QUESTIONS', payload: data})
     })
+  }
+}
+
+export function removeQuestion(question) {
+  return {
+    type: "REMOVE_QUESTION",
+    questionId: question.id
   }
 }
