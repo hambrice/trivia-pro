@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {fetchQuestions} from './actions/questionActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class App extends Component {
+
+  componentDidMount(){
+    this.props.fetchQuestions();
+  }
+
   render() {
     return (
       <div className="App">
@@ -17,5 +25,13 @@ class App extends Component {
     );
   }
 }
+function mapStateToProps(state){
+  return {questions: state.questions}
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchQuestions
+  }, dispatch)
+}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App)

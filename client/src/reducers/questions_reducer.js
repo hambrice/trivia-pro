@@ -1,8 +1,8 @@
-export default (state = {questions: []}, action) => {
+export default (state = [], action) => {
   switch (action.type) {
 
     case 'FETCH_QUESTIONS':
-      return Object.assign({}, state, {pictures: action.payload})
+      return state = action.payload
 
     default:
       return state;
