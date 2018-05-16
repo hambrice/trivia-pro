@@ -2,13 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Question from '../components/Question'
+import {fetchQuestions} from '../actions/questionActions';
+
 
 class TriviaPage extends React.Component {
-
+  componentDidMount(){
+    this.props.fetchQuestions();
+  }
   render() {
     return(
       <div>
-        <Question />
+        {this.props.questions[0] ? <Question question={this.props.questions[0]}/> : "Loading"}
       </div>
     )
   }
@@ -16,6 +20,11 @@ class TriviaPage extends React.Component {
 }
 
 function mapStateToProps(state){
-  return {questions: state}
+  return {questions: state.questions}
 }
-export default TriviaPage;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchQuestions
+  }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TriviaPage);

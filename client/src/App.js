@@ -8,9 +8,9 @@ import TriviaPage from './containers/TriviaPage';
 
 class App extends Component {
 
-  componentDidMount(){
-    this.props.fetchQuestions();
-  }
+  // componentDidMount(){
+  //   this.props.fetchQuestions();
+  // }
 
   render() {
     return (
@@ -20,13 +20,14 @@ class App extends Component {
     );
   }
 }
-function mapStateToProps(state){
-  return {questions: state.questions}
-}
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    fetchQuestions
-  }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+// function mapStateToProps(state){
+//   return {questions: state.questions}
+// }
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({
+//     fetchQuestions
+//   }, dispatch)
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

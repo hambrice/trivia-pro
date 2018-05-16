@@ -1,14 +1,12 @@
 import React from 'react';
 
+// const Answer = (props) => {
+// return(<ol>
+// </ol> )}
+
 const Question = (props) =>
 <div>
-  <strong>Who is the best superhero?</strong>
-  <ol>
-    <li>Ant Man</li>
-    <li>Iron Man </li>
-    <li>Black Panther </li>
-    <li>Spider-Man </li>
-  </ol>
+<strong>{props.question.question}</strong>
 </div>
 
 export default Question;
