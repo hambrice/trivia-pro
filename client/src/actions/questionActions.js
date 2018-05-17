@@ -15,3 +15,10 @@ export function removeQuestion(question) {
     questionId: question.id
   }
 }
+
+export function nextQuestion(questionNumber) {
+  return {
+    type: "NEXT_QUESTION",
+    questionKey: questionNumber
+  }
+}

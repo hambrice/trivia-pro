@@ -2,23 +2,29 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Question from '../components/Question'
-import {fetchQuestions} from '../actions/questionActions';
+import {fetchQuestions, removeQuestion} from '../actions/questionActions';
 
-const CorrectResponse = (props) => {
-  <div>
-    <div>Correct!</div>
-    <button>Next Question</button>
-  </div>
+const NextQuestion = (props) => <button onClick={props.handleNextClick}> NextQuestion </button>
+
+const Response = (props) => {
+  return (
+    <div>
+      <div>{props.response}</div>
+      <NextQuestion handleNextClick={props.handleNextClick}/>
+    </div>
+  )
 }
+
+
 class TriviaPage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       renderResult: null
     }
   }
   componentDidMount(){
-    this.props.fetchQuestions();
+    this.props.fetchQuestions()
   }
 
 shuffleAnswers = (question) => {
@@ -46,30 +52,24 @@ shuffleAnswers = (question) => {
       }
     }
   }
+
+  handleNextClick = (event) => {
+    debugger;
+    this.props.removeQuestion()
+  }
   renderResults = () => {
     switch(this.state.renderResult){
       case 'correct':
-      debugger;
-      return( <CorrectResponse />
+      return( <Response response="Correct!" handleNextClick={this.props.removeQuestion}/>
         )
       case 'incorrect':
       return(
-        <div>
-          <div>Incorrect</div>
-          <button>Next Question</button>
-        </div>)
+        <Response response="Incorrect" handleNextClick={this.props.removeQuestion}/>
+      )
 
     }
-    // if (boolean) {
-    //   return(
-    //     <div>Correct!</div>
-    //   )
-    // } else {
-    //   return(
-    //     <div>Incorrect</div>
-    //   )
-    // }
   }
+
   render() {
     return(
       <div>
@@ -82,14 +82,16 @@ shuffleAnswers = (question) => {
 }
 
 function mapStateToProps(state){
+  debugger;
   return {
-    questions: state.questions,
-    currentQuestion: state.questions[0]
+    currentQuestion: state.questions.currentQuestion,
+    questionCount: state.questions.questionCount
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchQuestions
+    fetchQuestions,
+    removeQuestion
   }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TriviaPage);

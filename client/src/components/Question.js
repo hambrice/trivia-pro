@@ -7,7 +7,6 @@ const Answers = (props) =>
 
 class Question extends React.Component {
   shouldComponentUpdate(nextProps) {
-    debugger;
     return this.props.question.question !== nextProps.question.question
   }
 
