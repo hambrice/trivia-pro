@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Question from '../components/Question'
-import {fetchQuestions, removeQuestion} from '../actions/questionActions';
+import {fetchQuestions, nextQuestion} from '../actions/questionActions';
 
 const NextQuestion = (props) => <button onClick={props.handleNextClick}> NextQuestion </button>
 
@@ -41,7 +41,6 @@ shuffleAnswers = (question) => {
   handleAnswerClick = (event) => {
     if (!this.state.renderResult) {
       if (this.findAnswer(event.target.innerText)) {
-        event.target.style.fontWeight = "900"
         this.setState({
           renderResult: 'correct'
         })
@@ -54,23 +53,26 @@ shuffleAnswers = (question) => {
   }
 
   handleNextClick = (event) => {
-    debugger;
-    this.props.removeQuestion()
+    this.props.nextQuestion()
+    this.setState({
+      renderResult: null
+    })
   }
   renderResults = () => {
     switch(this.state.renderResult){
       case 'correct':
-      return( <Response response="Correct!" handleNextClick={this.props.removeQuestion}/>
+      return( <Response response="Correct!" handleNextClick={this.handleNextClick}/>
         )
       case 'incorrect':
       return(
-        <Response response="Incorrect" handleNextClick={this.props.removeQuestion}/>
+        <Response response="Incorrect" handleNextClick={this.handleNextClick}/>
       )
 
     }
   }
 
   render() {
+    // Loading shows when out of questions (can be used for game over instead)
     return(
       <div>
         {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : "Loading"}
@@ -82,7 +84,6 @@ shuffleAnswers = (question) => {
 }
 
 function mapStateToProps(state){
-  debugger;
   return {
     currentQuestion: state.questions.currentQuestion,
     questionCount: state.questions.questionCount
@@ -91,7 +92,7 @@ function mapStateToProps(state){
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchQuestions,
-    removeQuestion
+    nextQuestion
   }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TriviaPage);

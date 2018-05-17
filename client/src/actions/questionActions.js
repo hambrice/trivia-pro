@@ -16,9 +16,8 @@ export function removeQuestion(question) {
   }
 }
 
-export function nextQuestion(questionNumber) {
+export function nextQuestion() {
   return {
-    type: "NEXT_QUESTION",
-    questionKey: questionNumber
+    type: "NEXT_QUESTION"
   }
 }

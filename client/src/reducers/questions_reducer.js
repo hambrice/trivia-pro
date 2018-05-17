@@ -1,8 +1,12 @@
-export default (state = [], action) => {
+export default (state = {}, action) => {
   switch (action.type) {
 
     case 'FETCH_QUESTIONS':
       return {allQuestions:action.payload, currentQuestion:action.payload[0], questionCount:action.payload.length}
+
+    case 'NEXT_QUESTION':
+      const nextKey = state.currentQuestion.id
+      return Object.assign({}, state, {currentQuestion: state.allQuestions[nextKey]})
 
     case 'REMOVE_QUESTION':
       return state.filter(question => question.id !== action.questionId)
