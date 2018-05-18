@@ -2,7 +2,7 @@ import React from 'react';
 
 const Answers = (props) =>
 <ul>
-  {props.answers.map(answer => <li onClick={props.handleAnswerClick}>{answer}</li>)}
+  {props.answers.map((answer,key) => <li key={key} onClick={props.handleAnswerClick}>{answer}</li>)}
 </ul>
 
 class Question extends React.Component {
