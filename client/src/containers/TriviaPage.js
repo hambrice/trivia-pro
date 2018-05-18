@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Question from '../components/Question'
 import {fetchQuestions, nextQuestion} from '../actions/questionActions';
-import Response from '../components/Response'
+import Response from '../components/Response';
+import Scoreboard from '../components/Scoreboard';
 
 
 
@@ -70,6 +71,7 @@ shuffleAnswers = (question) => {
     // Loading shows when out of questions (can be used for game over instead)
     return(
       <div>
+        {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} questionNumber={this.props.currentQuestion.id} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : "Loading"}
         {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : "Loading"}
         {this.renderResults()}
       </div>

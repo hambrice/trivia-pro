@@ -1,3 +1,5 @@
+import React from 'react';
+
 const NextQuestion = (props) => <button onClick={props.handleNextClick}> NextQuestion </button>
 
 const Response = (props) => {
