@@ -3,24 +3,17 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Question from '../components/Question'
 import {fetchQuestions, nextQuestion} from '../actions/questionActions';
+import Response from '../components/Response'
 
-const NextQuestion = (props) => <button onClick={props.handleNextClick}> NextQuestion </button>
-
-const Response = (props) => {
-  return (
-    <div>
-      <div>{props.response}</div>
-      <NextQuestion handleNextClick={props.handleNextClick}/>
-    </div>
-  )
-}
 
 
 class TriviaPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      renderResult: null
+      renderResult: null,
+      correctCount: 0,
+      incorrectCount: 0
     }
   }
   componentDidMount(){
@@ -42,11 +35,13 @@ shuffleAnswers = (question) => {
     if (!this.state.renderResult) {
       if (this.findAnswer(event.target.innerText)) {
         this.setState({
-          renderResult: 'correct'
+          renderResult: 'correct',
+          correctCount: this.state.correctCount + 1
         })
       } else {
         this.setState({
-          renderResult: 'incorrect'
+          renderResult: 'incorrect',
+          incorrectCount: this.state.incorrectCount + 1
         })
       }
     }
