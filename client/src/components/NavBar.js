@@ -12,15 +12,15 @@ const NavBar = props => {
       </NavLink>
       <NavLink
         style={{ marginRight: '10px' }}
-        to="/movies"
+        to="/about"
       >
-        Movies
+        About
       </NavLink>
       <NavLink
         style={{ marginRight: '10px' }}
-        to="/movies/new"
+        to="settings"
       >
-        Add Movie
+        Settings
       </NavLink>
     </div>
   );
