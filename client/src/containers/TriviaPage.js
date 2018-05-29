@@ -14,7 +14,8 @@ class TriviaPage extends React.Component {
     this.state = {
       renderResult: null,
       correctCount: 0,
-      incorrectCount: 0
+      incorrectCount: 0,
+      questionNumber: 1
     }
   }
   componentDidMount(){
@@ -37,12 +38,15 @@ shuffleAnswers = (question) => {
       if (this.findAnswer(event.target.innerText)) {
         this.setState({
           renderResult: 'correct',
-          correctCount: this.state.correctCount + 1
+          correctCount: this.state.correctCount + 1,
+          questionNumber: this.state.questionNumber + 1
         })
       } else {
         this.setState({
           renderResult: 'incorrect',
-          incorrectCount: this.state.incorrectCount + 1
+          incorrectCount: this.state.incorrectCount + 1,
+          questionNumber: this.state.questionNumber + 1
+
         })
       }
     }
@@ -71,7 +75,7 @@ shuffleAnswers = (question) => {
     // Loading shows when out of questions (can be used for game over instead)
     return(
       <div>
-        {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} questionNumber={this.props.currentQuestion.id} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
+        {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} questionNumber={this.state.questionNumber} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
         {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : "Loading"}
         {this.renderResults()}
       </div>

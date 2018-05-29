@@ -14,7 +14,7 @@ const NavBar = props => {
         style={{ marginRight: '10px' }}
         to="/about"
       >
-        About
+        Game
       </NavLink>
       <NavLink
         style={{ marginRight: '10px' }}
