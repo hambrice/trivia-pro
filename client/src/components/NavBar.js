@@ -18,7 +18,7 @@ const NavBar = props => {
       </NavLink>
       <NavLink
         style={{ marginRight: '10px' }}
-        to="settings"
+        to="/settings"
       >
         Settings
       </NavLink>

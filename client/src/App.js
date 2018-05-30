@@ -5,6 +5,7 @@ import {fetchQuestions} from './actions/questionActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TriviaPage from './containers/TriviaPage';
+import SettingsPage from './containers/SettingsPage';
 import {
   BrowserRouter as Router,
   Route
@@ -15,13 +16,14 @@ class App extends Component {
   // componentDidMount(){
   //   this.props.fetchQuestions();
   // }
-
+  //Don't use Navbar; instead link to game on home page, link to settings page in stats div
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
-          <TriviaPage />
+          <Route exact path="/" component={TriviaPage} />
+          <Route exact path="/settings" component={SettingsPage} />
           </div>
       </Router>
     );
