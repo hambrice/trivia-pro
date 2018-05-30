@@ -21,9 +21,7 @@ class App extends Component {
 
     }
   }
-  // componentDidMount(){
-  //   this.props.fetchQuestions();
-  // }
+
   //Don't use Navbar; instead link to game on home page, link to settings page in stats div
   render() {
     return (
