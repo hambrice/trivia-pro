@@ -40,15 +40,7 @@ const SettingsForm = (props) =>
   </form>
 
 class SettingsPage extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-      questionAmount: 20,
-      category: "random",
-      gameMode: "off"
 
-    }
-  }
 
 handleSubmitClick = (event) => {
   const category = event.target.getElementsByTagName("select")[0].value
@@ -67,6 +59,7 @@ handleChange = (event) => {
 
 
   render() {
+    debugger;
     return(
       <SettingsForm handleSubmitClick={this.handleSubmitClick} onChange={this.handleChange} />
     )
