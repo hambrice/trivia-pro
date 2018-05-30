@@ -1,9 +1,10 @@
 import 'isomorphic-fetch';
 
-export function fetchQuestions() {
+export function fetchQuestions(settings) {
   return(dispatch) => {
     dispatch({type: 'LOADING_QUESTIONS'});
-    return fetch('/questions').then(response => response.json()).then(data => {
+    const settingsString = JSON.stringify(settings)
+    return fetch(`/questions/${settingsString}`).then(response => response.json()).then(data => {
       dispatch({type: 'FETCH_QUESTIONS', payload: data})
     })
   }

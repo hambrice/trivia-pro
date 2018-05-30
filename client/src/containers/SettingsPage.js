@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {changeSettings} from '../actions/settingsActions';
+
 //import SettingsForm from '../components/SettingsForm';
 
 const SettingsForm = (props) =>
@@ -65,5 +67,14 @@ handleChange = (event) => {
     )
   }
 }
-
-export default SettingsPage;
+function mapStateToProps(state){
+  return {
+    settings: state.settings
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    changeSettings
+  }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);

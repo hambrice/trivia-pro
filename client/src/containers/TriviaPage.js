@@ -19,7 +19,7 @@ class TriviaPage extends React.Component {
     }
   }
   componentDidMount(){
-    this.props.fetchQuestions()
+    this.props.fetchQuestions(this.props.)
   }
 
 shuffleAnswers = (question) => {
@@ -72,6 +72,7 @@ shuffleAnswers = (question) => {
   }
 
   render() {
+    debugger;
     // Loading shows when out of questions (can be used for game over instead)
     return(
       <div>
@@ -87,7 +88,8 @@ shuffleAnswers = (question) => {
 function mapStateToProps(state){
   return {
     currentQuestion: state.questions.currentQuestion,
-    questionCount: state.questions.questionCount
+    questionCount: state.questions.questionCount,
+    settings: state.settings
   }
 }
 const mapDispatchToProps = (dispatch) => {

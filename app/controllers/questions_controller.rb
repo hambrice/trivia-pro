@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  def index
+  def show
     render json: Question.all
   end
 end
