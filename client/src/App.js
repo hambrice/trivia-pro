@@ -12,7 +12,15 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar'
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      questionAmount: 20,
+      category: "random",
+      gameMode: "off"
 
+    }
+  }
   // componentDidMount(){
   //   this.props.fetchQuestions();
   // }
@@ -22,7 +30,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar />
-          <Route exact path="/" component={TriviaPage} />
+          <Route exact path="/" component={TriviaPage} questionAmount={this.state.questionAmount}/>
           <Route exact path="/settings" component={SettingsPage} />
           </div>
       </Router>
