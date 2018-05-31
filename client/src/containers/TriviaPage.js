@@ -5,7 +5,7 @@ import Question from '../components/Question'
 import {fetchQuestions, nextQuestion} from '../actions/questionActions';
 import Response from '../components/Response';
 import Scoreboard from '../components/Scoreboard';
-
+import Filler from '../components/Filler';
 
 
 class TriviaPage extends React.Component {
@@ -15,7 +15,8 @@ class TriviaPage extends React.Component {
       renderResult: null,
       correctCount: 0,
       incorrectCount: 0,
-      questionNumber: 1
+      questionNumber: 1,
+      fillerText: "Loading.."
     }
   }
   componentDidMount(){
@@ -39,13 +40,11 @@ shuffleAnswers = (question) => {
         this.setState({
           renderResult: 'correct',
           correctCount: this.state.correctCount + 1,
-          questionNumber: this.state.questionNumber + 1
         })
       } else {
         this.setState({
           renderResult: 'incorrect',
           incorrectCount: this.state.incorrectCount + 1,
-          questionNumber: this.state.questionNumber + 1
 
         })
       }
@@ -55,7 +54,9 @@ shuffleAnswers = (question) => {
   handleNextClick = (event) => {
     this.props.nextQuestion(this.state.questionNumber)
     this.setState({
-      renderResult: null
+      renderResult: null,
+      fillerText: "Game Over!",
+      questionNumber: this.state.questionNumber + 1
     })
   }
   renderResults = () => {
@@ -76,7 +77,7 @@ shuffleAnswers = (question) => {
     return(
       <div>
         {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} difficulty={this.props.currentQuestion.difficulty} questionNumber={this.state.questionNumber} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
-        {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : "Loading"}
+        {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : <Filler fillerText={this.state.fillerText} />}
         {this.renderResults()}
       </div>
     )
