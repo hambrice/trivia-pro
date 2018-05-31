@@ -5,7 +5,7 @@ export default (state = {}, action) => {
       return {allQuestions:action.payload, currentQuestion:action.payload[0], questionCount:action.payload.length}
 
     case 'NEXT_QUESTION':
-      const nextKey = state.currentQuestion.id
+      const nextKey = action.count
       return Object.assign({}, state, {currentQuestion: state.allQuestions[nextKey]})
 
     case 'REMOVE_QUESTION':

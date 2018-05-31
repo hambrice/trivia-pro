@@ -53,7 +53,7 @@ shuffleAnswers = (question) => {
   }
 
   handleNextClick = (event) => {
-    this.props.nextQuestion()
+    this.props.nextQuestion(this.state.questionNumber)
     this.setState({
       renderResult: null
     })
@@ -72,7 +72,6 @@ shuffleAnswers = (question) => {
   }
 
   render() {
-    debugger;
     // Loading shows when out of questions (can be used for game over instead)
     return(
       <div>

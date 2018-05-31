@@ -13,7 +13,7 @@ class Question extends React.Component {
   render() {
     return(
       <div>
-      <strong>{this.props.question.id}. {this.props.question.question}</strong>
+      <strong>{this.props.question.question}</strong>
       <Answers answers={this.props.answers} handleAnswerClick={this.props.handleAnswerClick}/>
       </div>
     )

@@ -17,8 +17,9 @@ export function removeQuestion(question) {
   }
 }
 
-export function nextQuestion() {
+export function nextQuestion(questionAmount) {
   return {
-    type: "NEXT_QUESTION"
+    type: "NEXT_QUESTION",
+    count: questionAmount
   }
 }
