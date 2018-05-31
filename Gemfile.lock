@@ -52,6 +52,7 @@ GEM
       thor (~> 0.19.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     listen (3.1.5)
@@ -136,6 +137,7 @@ DEPENDENCIES
   byebug
   faraday
   foreman (~> 0.82.0)
+  htmlentities
   listen (>= 3.0.5, < 3.2)
   pry-rails
   puma (~> 3.7)
