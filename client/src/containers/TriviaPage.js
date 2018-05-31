@@ -19,7 +19,7 @@ class TriviaPage extends React.Component {
     }
   }
   componentDidMount(){
-    this.props.fetchQuestions(this.props.)
+    this.props.fetchQuestions(this.props.settings)
   }
 
 shuffleAnswers = (question) => {

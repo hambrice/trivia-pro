@@ -61,7 +61,6 @@ handleChange = (event) => {
 
 
   render() {
-    debugger;
     return(
       <SettingsForm handleSubmitClick={this.handleSubmitClick} onChange={this.handleChange} />
     )
