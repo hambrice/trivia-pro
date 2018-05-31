@@ -65,7 +65,7 @@ shuffleAnswers = (question) => {
         )
       case 'incorrect':
       return(
-        <Response response="Incorrect" handleNextClick={this.handleNextClick}/>
+        <Response response="Incorrect" answer={this.props.currentQuestion.correct_answer} handleNextClick={this.handleNextClick}/>
       )
 
     }
@@ -75,7 +75,7 @@ shuffleAnswers = (question) => {
     // Loading shows when out of questions (can be used for game over instead)
     return(
       <div>
-        {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} questionNumber={this.state.questionNumber} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
+        {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} difficulty={this.props.currentQuestion.difficulty} questionNumber={this.state.questionNumber} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
         {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : "Loading"}
         {this.renderResults()}
       </div>

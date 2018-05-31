@@ -1,8 +1,8 @@
-export default (state = {questionAmount: 20, category: "random", difficultyMode: "off"}, action) => {
+export default (state = {questionAmount: 20, category: "random", difficultyMode: false}, action) => {
   switch (action.type) {
 
     case 'CHANGE_SETTINGS':
-      return {questionAmount: action.settings.questionAmount, category: action.settings.category, difficultyMode: action.settings.difficultyMode}
+      return action.settings
 
     default:
       return state;

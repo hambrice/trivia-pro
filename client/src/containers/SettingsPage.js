@@ -34,7 +34,7 @@ const SettingsForm = (props) =>
     <div>
       <label>Smart Mode</label>
       <label className="switch">
-        <input type="checkbox" />
+        <input type="checkbox" value="on"/>
         <span className="slider round"></span>
       </label>
     </div>
@@ -51,7 +51,7 @@ handleSubmitClick = (event) => {
   debugger;
   object.questionAmount = parseInt(inputs[0].value, 10)
   object.category = event.target.getElementsByTagName("select")[0].value
-  object.difficultyMode = inputs[1].value
+  object.difficultyMode = inputs[1].checked
   this.props.changeSettings(object)
 }
 
