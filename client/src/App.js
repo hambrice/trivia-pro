@@ -12,15 +12,7 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar'
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      questionAmount: 20,
-      category: "random",
-      gameMode: "off"
 
-    }
-  }
 
   //Don't use Navbar; instead link to game on home page, link to settings page in stats div
   render() {
@@ -28,7 +20,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar />
-          <Route exact path="/" component={TriviaPage} questionAmount={this.state.questionAmount}/>
+          <Route exact path="/" component={TriviaPage} />
           <Route exact path="/settings" component={SettingsPage} />
           </div>
       </Router>

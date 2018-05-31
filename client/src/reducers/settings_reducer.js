@@ -2,7 +2,7 @@ export default (state = {questionAmount: 20, category: "random", difficultyMode:
   switch (action.type) {
 
     case 'CHANGE_SETTINGS':
-      return action.settings
+      return {questionAmount: action.settings.questionAmount, category: action.settings.category, difficultyMode: action.settings.difficultyMode}
 
     default:
       return state;

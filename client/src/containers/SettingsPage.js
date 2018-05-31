@@ -33,9 +33,9 @@ const SettingsForm = (props) =>
     </div>
     <div>
       <label>Smart Mode</label>
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox" />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
     </div>
     <input type="submit" value="Update Settings" />
@@ -45,12 +45,14 @@ class SettingsPage extends React.Component{
 
 
 handleSubmitClick = (event) => {
-  const category = event.target.getElementsByTagName("select")[0].value
+  event.preventDefault();
+  const object = {}
   const inputs = event.target.getElementsByTagName("input")
-  const questionAmount = inputs[0].value
-  const gameMode = inputs[1].value
-
   debugger;
+  object.questionAmount = parseInt(inputs[0].value, 10)
+  object.category = event.target.getElementsByTagName("select")[0].value
+  object.difficultyMode = inputs[1].value
+  this.props.changeSettings(object)
 }
 
 handleChange = (event) => {
