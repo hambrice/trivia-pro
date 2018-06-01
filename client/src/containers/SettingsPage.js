@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeSettings} from '../actions/settingsActions';
-
-//import SettingsForm from '../components/SettingsForm';
+import SettingsForm from '../components/SettingsForm';
 
 
 

@@ -75,7 +75,7 @@ shuffleAnswers = (question) => {
   render() {
     // Loading shows when out of questions (can be used for game over instead)
     return(
-      <div>
+      <div className="row">
         {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} difficulty={this.props.currentQuestion.difficulty} questionNumber={this.state.questionNumber} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
         {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : <Filler fillerText={this.state.fillerText} />}
         {this.renderResults()}

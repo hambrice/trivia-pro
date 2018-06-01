@@ -12,9 +12,11 @@ class Question extends React.Component {
 
   render() {
     return(
-      <div>
-      <strong>{this.props.question.question}</strong>
-      <Answers answers={this.props.answers} handleAnswerClick={this.props.handleAnswerClick}/>
+      <div className="card border-success mb-3 col-6" style={{maxWidth: "20rem;"}}>
+        <div className="card-body">
+          <strong>{this.props.question.question}</strong>
+          <Answers answers={this.props.answers} handleAnswerClick={this.props.handleAnswerClick}/>
+        </div>
       </div>
     )
   }
