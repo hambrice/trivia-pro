@@ -10,7 +10,9 @@ class Question extends React.Component {
   getAnswers = (answers, handler) =>
     <table className="tabe table-hover" style={{float:"none", margin:"0 auto"}}>
       <tbody>
-        {answers.map((answer,key) => <tr><td key={key} onClick={handler} style={{cursor:"pointer"}}><h5>{answer}</h5></td></tr>)}
+        {answers.map((answer,key) =>
+          <tr><td key={key} onClick={handler} style={{cursor:"pointer"}}><h5>{answer}</h5></td></tr>
+        )}
         </tbody>
         </table>
 

@@ -5,4 +5,4 @@ const Filler = props =>
   {props.fillerText}
 </div>
 
-export default Filler
+export default Filler;

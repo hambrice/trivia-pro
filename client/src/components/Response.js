@@ -1,6 +1,10 @@
 import React from 'react';
 
-const NextQuestion = props => <button type="button" className="btn btn-outline-success" onClick={props.handleNextClick}> NextQuestion </button>
+const NextQuestion = props =>
+  <button type="button" className="btn btn-outline-success" onClick={props.handleNextClick}>
+    Next Question
+  </button>
+
 const CorrectAnswer = props =>
   <div>
     <b className="text-primary">Correct Answer:</b> {props.answer} <br/><br/>
