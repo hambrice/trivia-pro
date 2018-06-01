@@ -13,7 +13,7 @@ const SettingsForm = (props) =>
       <select>
       {options.map((option, key) =>
         <option key={key} value={option.value}>{option.text}</option>
-      )
+        )
       }
       </select>
     </div>
