@@ -1,4 +1,11 @@
 import React from 'react';
+// TODO: jwaterman iterate through this array instead
+const options = [
+  {
+    value: 'General Knowledge',
+    text: 'General Knowledge'
+  }
+];
 const SettingsForm = (props) =>
   <form onSubmit={props.handleSubmitClick}>
     <div>

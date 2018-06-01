@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 
 export function changeSettings(newSettings) {
   return {

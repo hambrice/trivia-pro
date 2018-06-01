@@ -2,7 +2,7 @@ import React from 'react';
 
 const Scoreboard = (props) => {
   return(
-    <div className="card border-success mb-3 col-4" style={{maxWidth: "20rem;"}}>
+    <div>
       <div className="card-header">Stats</div>
       <div className="card-body">
         Question: {props.questionNumber}/{props.totalCount}<br/>

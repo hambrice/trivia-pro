@@ -1,8 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import Question from '../components/Question'
-import {fetchQuestions, nextQuestion} from '../actions/questionActions';
+import { fetchQuestions, nextQuestion } from '../actions/questionActions';
 import Response from '../components/Response';
 import Scoreboard from '../components/Scoreboard';
 import Filler from '../components/Filler';
@@ -19,39 +20,43 @@ class TriviaPage extends React.Component {
       fillerText: "Loading.."
     }
   }
-  componentDidMount(){
-    this.props.fetchQuestions(this.props.settings)
+  componentDidMount() {
+    const { fetchQuestions, settings } = this.props;
+
+    fetchQuestions(settings);
   }
 
-shuffleAnswers = (question) => {
-  const answers = [question.correct_answer, ...JSON.parse(question.incorrect_answers)]
-      for (let i = answers.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [answers[i], answers[j]] = [answers[j], answers[i]];
-      }
-      return answers
+  shuffleAnswers = question => {
+    const answers = [question.correct_answer, ...JSON.parse(question.incorrect_answers)];
+
+    for (let i = answers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [answers[i], answers[j]] = [answers[j], answers[i]];
+    }
+
+    return answers;
   }
 
-  findAnswer = (answer) => answer === this.props.currentQuestion.correct_answer
+  findAnswer = answer => answer === this.props.currentQuestion.correct_answer;
 
-  handleAnswerClick = (event) => {
-    if (!this.state.renderResult) {
+  handleAnswerClick = event => {
+    const { correctCount, renderResult, incorrectCount } = this.state;
+    if (!renderResult) {
       if (this.findAnswer(event.target.innerText)) {
         this.setState({
           renderResult: 'correct',
-          correctCount: this.state.correctCount + 1,
+          correctCount: correctCount + 1
         })
       } else {
         this.setState({
           renderResult: 'incorrect',
-          incorrectCount: this.state.incorrectCount + 1,
-
+          incorrectCount: incorrectCount + 1
         })
       }
     }
   }
 
-  handleNextClick = (event) => {
+  handleNextClick = event => {
     this.props.nextQuestion(this.state.questionNumber)
     this.setState({
       renderResult: null,
@@ -73,12 +78,38 @@ shuffleAnswers = (question) => {
   }
 
   render() {
-    // Loading shows when out of questions (can be used for game over instead)
     return(
       <div className="row">
-        {this.props.currentQuestion ? <Scoreboard category={this.props.currentQuestion.category} difficulty={this.props.currentQuestion.difficulty} questionNumber={this.state.questionNumber} totalCount={this.props.questionCount} correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/> : <Scoreboard category="" questionNumber="--" totalCount="--" correctCount={this.state.correctCount} incorrectCount={this.state.incorrectCount}/>}
-        {this.props.currentQuestion ? <Question question={this.props.currentQuestion} answers={this.shuffleAnswers(this.props.currentQuestion)} handleAnswerClick={this.handleAnswerClick}/> : <Filler fillerText={this.state.fillerText} />}
-        {this.renderResults()}
+        <div className="card border-success mb-3 col-4" style={{maxWidth: "20rem;"}}>
+          {
+            this.props.currentQuestion ?
+              <Scoreboard
+                category={this.props.currentQuestion.category}
+                difficulty={this.props.currentQuestion.difficulty}
+                questionNumber={this.state.questionNumber}
+                totalCount={this.props.questionCount}
+                correctCount={this.state.correctCount}
+                incorrectCount={this.state.incorrectCount}
+                /> :
+                <Scoreboard
+                category=""
+                questionNumber="--"
+                totalCount="--"
+                correctCount={this.state.correctCount}
+                incorrectCount={this.state.incorrectCount}
+                />
+            }
+          </div>
+          <div className="card border-success mb-3 col-6" style={{maxWidth: "20rem;"}}>
+            {this.props.currentQuestion ?
+              <Question
+                question={this.props.currentQuestion}
+                answers={this.shuffleAnswers(this.props.currentQuestion)}
+                handleAnswerClick={this.handleAnswerClick}
+                /> :
+                <Filler fillerText={this.state.fillerText} />}
+            {this.renderResults()}
+          </div>
       </div>
     )
   }

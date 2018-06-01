@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {fetchQuestions} from './actions/questionActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import TriviaPage from './containers/TriviaPage';
-import SettingsPage from './containers/SettingsPage';
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import NavBar from './components/NavBar'
+
+import './App.css';
+import {fetchQuestions} from './actions/questionActions';
+import TriviaPage from './containers/TriviaPage';
+import SettingsPage from './containers/SettingsPage';
+import NavBar from './components/NavBar';
+
+
 class App extends Component {
 
 
@@ -27,14 +29,5 @@ class App extends Component {
     );
   }
 }
-// function mapStateToProps(state){
-//   return {questions: state.questions}
-// }
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({
-//     fetchQuestions
-//   }, dispatch)
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(App)
+
 export default App
