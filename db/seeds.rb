@@ -13,7 +13,7 @@ def get_questions(amount, category_id, session_token)
   resp = Faraday.get url(amount, category_id, session_token)
   questions = JSON.parse(resp.body)["results"]
   questions.each do |question|
-    Question.create(category: question["category"], of_type: question["type"], difficulty: question["difficulty"], question: HTMLEntities.new.decode(question["question"]), correct_answer: HTMLEntities.new.decode(question["correct_answer"]), incorrect_answers: question["incorrect_answers"].collect {|a| HTMLEntities.new.decode(a)})
+    Question.create(category: question["category"], of_type: question["type"], difficulty: question["difficulty"].capitalize, question: HTMLEntities.new.decode(question["question"]), correct_answer: HTMLEntities.new.decode(question["correct_answer"]), incorrect_answers: question["incorrect_answers"].collect {|a| HTMLEntities.new.decode(a)})
   end
 end
 
