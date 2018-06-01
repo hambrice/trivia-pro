@@ -1,10 +1,5 @@
 import React from 'react';
 
-// TODO: jwaterman Make this a class method similar to renderResults
-const Answers = props =>
-<ul className="list-unstyled">
-  {props.answers.map((answer,key) => <li key={key} onClick={props.handleAnswerClick}>{answer}</li>)}
-</ul>
 
 class Question extends React.Component {
 
@@ -12,16 +7,23 @@ class Question extends React.Component {
     return this.props.question.question !== nextProps.question.question;
   }
 
+  getAnswers = (answers, handler) =>
+    <table className="tabe table-hover" style={{float:"none", margin:"0 auto"}}>
+      <tbody>
+        {answers.map((answer,key) => <tr><td key={key} onClick={handler} style={{cursor:"pointer"}}><h5>{answer}</h5></td></tr>)}
+        </tbody>
+        </table>
 
   render() {
+    const { question, answers, handleAnswerClick } = this.props
     return(
         <div className="card-body">
-        <h5 className="card-title text-primary">{this.props.question.question}</h5>
-          <Answers answers={this.props.answers} handleAnswerClick={this.props.handleAnswerClick}/>
+        <h4 className="card-title text-primary">{question.question}</h4>
+          {this.getAnswers(answers, handleAnswerClick)}
         </div>
     )
-  }
-}
+  };
+};
 
 
 export default Question;

@@ -1686,6 +1686,8 @@ pre code {
   border-top: 1px solid #073642;
 }
 
+
+
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #073642;
@@ -1731,6 +1733,10 @@ pre code {
 
 .table-hover tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.075);
+  color: #2AA198;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #2AA198;
 }
 
 .table-primary,

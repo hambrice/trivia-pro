@@ -1,15 +1,15 @@
 import React from 'react';
 
-const NextQuestion = props => <button onClick={props.handleNextClick}> NextQuestion </button>
+const NextQuestion = props => <button type="button" className="btn btn-outline-success" onClick={props.handleNextClick}> NextQuestion </button>
 const CorrectAnswer = props =>
   <div>
-    Correct Answer: {props.answer}
+    <b className="text-primary">Correct Answer:</b> {props.answer} <br/><br/>
   </div>
 
 const Response = props => {
   return (
     <div>
-      <div>{props.response}</div><br/>
+      <h5 className="text-success">{props.response}</h5><br/>
       {props.response === "Incorrect" ? <CorrectAnswer answer={props.answer}/> : null}
       <NextQuestion handleNextClick={props.handleNextClick}/>
 

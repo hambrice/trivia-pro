@@ -9,11 +9,11 @@ const options = [
 const SettingsForm = (props) =>
   <form onSubmit={props.handleSubmitClick}>
     <div>
-      <label>Question Amount  </label>
+      <label>Question Amount:</label>
       <input type="number" name="question-amount" onChange={props.handleChange}/>
     </div>
     <div>
-      <label>Category  </label>
+      <label>Category:</label>
       <select>
         <option value="random">Random</option>
         <option value="General Knowledge">General Knowledge</option>
@@ -32,14 +32,7 @@ const SettingsForm = (props) =>
         <option value="Entertainment: Cartoon & Animations">Cartoon and Animations</option>
       </select>
     </div>
-    <div>
-      <label>Smart Mode</label>
-      <label className="switch">
-        <input type="checkbox" value="on"/>
-        <span className="slider round"></span>
-      </label>
-    </div>
-    <input type="submit" value="Update Settings" />
+    <input type="submit" className="btn btn-outline-success" value="Update Settings" />
   </form>
 
   export default SettingsForm;
