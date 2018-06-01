@@ -1,12 +1,12 @@
 import React from 'react';
 
-const NextQuestion = (props) => <button onClick={props.handleNextClick}> NextQuestion </button>
-const CorrectAnswer = (props) =>
+const NextQuestion = props => <button onClick={props.handleNextClick}> NextQuestion </button>
+const CorrectAnswer = props =>
   <div>
     Correct Answer: {props.answer}
   </div>
 
-const Response = (props) => {
+const Response = props => {
   return (
     <div>
       <div>{props.response}</div><br/>

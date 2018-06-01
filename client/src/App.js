@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
-import {fetchQuestions} from './actions/questionActions';
+import SplashPage from './components/SplashPage';
+import { fetchQuestions } from './actions/questionActions';
 import TriviaPage from './containers/TriviaPage';
 import SettingsPage from './containers/SettingsPage';
 import NavBar from './components/NavBar';
@@ -22,7 +23,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar />
-          <Route exact path="/" component={TriviaPage} />
+          <Route exact path="/" component={SplashPage} />
+          <Route exact path="/game" component={TriviaPage} />
           <Route exact path="/settings" component={SettingsPage} />
           </div>
       </Router>

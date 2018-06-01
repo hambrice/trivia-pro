@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Filler = (props) =>
+const Filler = props =>
 <div>
   {props.fillerText}
 </div>

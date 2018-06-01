@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Scoreboard = (props) => {
+const Scoreboard = props => {
   return(
     <div>
-      <div className="card-header">Stats</div>
+      <h3 className="card-header">Stats</h3>
       <div className="card-body">
         Question: {props.questionNumber}/{props.totalCount}<br/>
         Category: {props.category}<br/>

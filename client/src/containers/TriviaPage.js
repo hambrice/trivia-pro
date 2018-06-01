@@ -80,7 +80,7 @@ class TriviaPage extends React.Component {
   render() {
     return(
       <div className="row">
-        <div className="card border-success mb-3 col-4" style={{maxWidth: "20rem;"}}>
+        <div className="card border-success mb-3 offset-1 col-sml-2" style={{maxWidth: "20rem;"}}>
           {
             this.props.currentQuestion ?
               <Scoreboard
@@ -100,7 +100,7 @@ class TriviaPage extends React.Component {
                 />
             }
           </div>
-          <div className="card border-success mb-3 col-6" style={{maxWidth: "20rem;"}}>
+          <div className="card border-success mb-3 offset-1 col-sml-6" style={{maxWidth: "20rem;"}}>
             {this.props.currentQuestion ?
               <Question
                 question={this.props.currentQuestion}
