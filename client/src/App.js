@@ -17,7 +17,6 @@ import NavBar from './components/NavBar';
 class App extends Component {
 
 
-  //Don't use Navbar; instead link to game on home page, link to settings page in stats div
   render() {
     return (
       <Router>

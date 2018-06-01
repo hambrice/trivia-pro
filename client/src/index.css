@@ -11,6 +11,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 :root {
   --blue: #B58900;
@@ -626,7 +627,7 @@ pre code {
 .col-xl-auto {
   position: relative;
   width: 100%;
-  min-height: 1px;
+  min-height: 5000px;
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -893,6 +894,7 @@ pre code {
         -ms-flex: 0 0 16.6666666667%;
             flex: 0 0 16.6666666667%;
     max-width: 16.6666666667%;
+
   }
   .col-sm-3 {
     -webkit-box-flex: 0;

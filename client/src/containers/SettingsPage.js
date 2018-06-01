@@ -15,6 +15,7 @@ class SettingsPage extends React.Component{
     object.category = event.target.getElementsByTagName("select")[0].value
     object.difficultyMode = inputs[1].checked
     this.props.changeSettings(object)
+    this.props.history.push('/game')
   };
 
   handleChange = event => {
@@ -23,10 +24,12 @@ class SettingsPage extends React.Component{
     });
   };
 
+  redirectToGame = () =>
+    this.props.history.push('/game');
 
   render() {
     return(
-      <SettingsForm handleSubmitClick={ this.handleSubmitClick } onChange={ this.handleChange } />
+      <SettingsForm handleSubmitClick={ this.handleSubmitClick } onChange={ this.handleChange } redirect={this.redirectToGame}/>
     );
   }
 }

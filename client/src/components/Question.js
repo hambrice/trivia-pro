@@ -16,7 +16,7 @@ class Question extends React.Component {
   render() {
     return(
         <div className="card-body">
-        <h5 className="card-title">{this.props.question.question}</h5>
+        <h5 className="card-title text-primary">{this.props.question.question}</h5>
           <Answers answers={this.props.answers} handleAnswerClick={this.props.handleAnswerClick}/>
         </div>
     )

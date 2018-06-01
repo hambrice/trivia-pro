@@ -1,23 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = props => {
-  return (
-    <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
-      <NavLink
-        style={{ marginRight: '10px' }}
-        to="/game"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        style={{ marginRight: '10px' }}
-        to="/settings"
-      >
-        Settings
-      </NavLink>
-    </div>
-  );
-}
+const NavBar = props =>
+<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <h2>TriviaPro</h2>
+</nav>
 
 export default NavBar;

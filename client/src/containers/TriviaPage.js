@@ -77,10 +77,14 @@ class TriviaPage extends React.Component {
     }
   }
 
+  redirectToSettings = () => {
+    this.props.history.push('/settings')
+  }
+
   render() {
     return(
       <div className="row">
-        <div className="card border-success mb-3 offset-1 col-sml-2" style={{maxWidth: "20rem;"}}>
+        <div className="card border-success mb-3 col-sml-2 stats" style={{maxWidth: "20rem"}}>
           {
             this.props.currentQuestion ?
               <Scoreboard
@@ -90,6 +94,7 @@ class TriviaPage extends React.Component {
                 totalCount={this.props.questionCount}
                 correctCount={this.state.correctCount}
                 incorrectCount={this.state.incorrectCount}
+                redirect={this.redirectToSettings}
                 /> :
                 <Scoreboard
                 category=""
@@ -100,7 +105,7 @@ class TriviaPage extends React.Component {
                 />
             }
           </div>
-          <div className="card border-success mb-3 offset-1 col-sml-6" style={{maxWidth: "20rem;"}}>
+          <div className="card border-success mb-3 col-sml-6 question" style={{maxWidth: "20rem"}}>
             {this.props.currentQuestion ?
               <Question
                 question={this.props.currentQuestion}
