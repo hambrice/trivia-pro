@@ -5154,8 +5154,10 @@ input[type="button"].btn-block {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #073642;
-  border-radius: 0.3rem;
+  background-color: rgba(238, 232, 213, 0.125);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 43, 54, 0.95);
+  border-radius: 0.25rem;
 }
 
 @media (min-width: 576px) {
