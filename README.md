@@ -1,24 +1,24 @@
-# README
+# TriviaPro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This React application pulls questions from the Open Trivia Database API to create an interactive trivia game.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+    $ git clone git@github.com:hambrice/trivia-pro.git
 
-* System dependencies
+## Usage
+Put the following line into terminal and follow the on-screen prompts.
 
-* Configuration
+    $ cd trivia-pro
+    $ bundle install
+    $ rake db:migrate
+    $ rake db:seed
+    $ rake start
 
-* Database creation
+## Contributing
 
-* Database initialization
+Bug reports and pull requests are welcome on GitHub at https://github.com/hambrice/trivia-pro. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
-* How to run the test suite
+## License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
