@@ -10,7 +10,4 @@ class QuestionsController < ApplicationController
       render json: Question.all.shuffle.first(settings["questionAmount"])
     end
   end
-  # def index
-  #   render json: Question.first(20)
-  # end
 end
