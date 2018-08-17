@@ -9,7 +9,7 @@ const Scoreboard = props => {
         <div className="text-success">Category:</div> {props.category}<br/>
         <div className="text-success">Difficulty:</div> {props.difficulty}<br/>
         <div className="text-success">Score:</div>
-        Score: {props.score}<br/><br/>
+Correct: {props.correctCount}   Incorrect: {props.incorrectCount}
         <button type="button" className="btn btn-outline-primary" onClick={()=> props.redirect()}>
           Change Settings
         </button>

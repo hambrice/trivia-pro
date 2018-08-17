@@ -14,7 +14,7 @@ class TriviaPage extends React.Component {
     super(props);
     this.state = {
       renderResult: null,
-      score: 0,
+      correctCount: 0,
       incorrectCount: 0,
       questionNumber: 1,
       fillerText: "Loading.."
@@ -40,18 +40,18 @@ class TriviaPage extends React.Component {
   findAnswer = answer => answer === this.props.currentQuestion.correct_answer;
 
   handleAnswerClick = event => {
-    const { score, renderResult, incorrectCount } = this.state;
+    const { correctCount, renderResult, incorrectCount } = this.state;
     if (!renderResult) {
       if (this.findAnswer(event.target.innerText)) {
         this.setState({
           renderResult: 'correct',
-          score: score + 10
+          correctCount: correctCount + 1
         })
       } else {
 
           this.setState({
             renderResult: 'incorrect',
-            score: score === 0 ? 0 : score - 10
+            incorrectCount: incorrectCount + 1
         })
 
       }
@@ -94,7 +94,7 @@ class TriviaPage extends React.Component {
                 difficulty={this.props.currentQuestion.difficulty}
                 questionNumber={this.state.questionNumber}
                 totalCount={this.props.questionCount}
-                score={this.state.score}
+                correctCount={this.state.correctCount}
                 incorrectCount={this.state.incorrectCount}
                 redirect={this.redirectToSettings}
                 /> :
