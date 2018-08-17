@@ -13,7 +13,9 @@ Put the following line into terminal and follow the on-screen prompts.
     $ bundle install
     $ rake db:migrate
     $ rake db:seed
-    $ rake start
+    $ rake start:production
+
+Then visit 'http://localhost:5000' in your browser.
 
 ## Contributing
 
