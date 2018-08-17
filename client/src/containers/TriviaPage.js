@@ -83,6 +83,17 @@ class TriviaPage extends React.Component {
     this.props.history.push('/settings')
   }
 
+  startOver = () => {
+    const { fetchQuestions, settings } = this.props;
+    fetchQuestions(settings);
+    this.setState({
+      correctCount: 0,
+      incorrectCount: 0,
+      questionNumber: 1
+    })
+
+  }
+
   render() {
     return(
       <div className="row">
@@ -115,7 +126,7 @@ class TriviaPage extends React.Component {
                 answers={this.shuffleAnswers(this.props.currentQuestion)}
                 handleAnswerClick={this.handleAnswerClick}
                 /> :
-                <Filler fillerText={this.state.fillerText} />}
+                <Filler fillerText={this.state.fillerText} redirect={this.startOver}/>}
             {this.renderResults()}
           </div>
       </div>
