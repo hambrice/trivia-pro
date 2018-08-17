@@ -13,7 +13,6 @@ class SettingsPage extends React.Component{
     const inputs = event.target.getElementsByTagName("input")
     object.questionAmount = parseInt(inputs[0].value, 10)
     object.category = event.target.getElementsByTagName("select")[0].value
-    object.difficultyMode = inputs[1].checked
     this.props.changeSettings(object)
     this.props.history.push('/game')
   };
