@@ -15,7 +15,12 @@ import NavBar from './components/NavBar';
 
 
 class App extends Component {
-  
+
+  componentDidMount() {
+    const { fetchQuestions, settings } = this.props;
+
+    fetchQuestions(settings);
+  }
 
   render() {
     return (
@@ -31,4 +36,15 @@ class App extends Component {
   }
 }
 
-export default App
+function mapStateToProps(state){
+  return {
+    settings: state.settings
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchQuestions
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

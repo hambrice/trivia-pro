@@ -20,11 +20,11 @@ class TriviaPage extends React.Component {
       fillerText: "Loading.."
     }
   }
-  componentDidMount() {
-    const { fetchQuestions, settings } = this.props;
-
-    fetchQuestions(settings);
-  }
+  // componentDidMount() {
+  //   const { fetchQuestions, settings } = this.props;
+  //
+  //   fetchQuestions(settings);
+  // }
 
   shuffleAnswers = question => {
     const answers = [question.correct_answer, ...JSON.parse(question.incorrect_answers)];
