@@ -7,19 +7,20 @@ class Question extends React.Component {
     return this.props.question.question !== nextProps.question.question;
   }
 
-  callApi = () => {
-    console.log('a')
-    const settings = {questionAmount: 1, category: "General Knowledge"}
-    const settingsString = JSON.stringify(settings)
-    fetch(`/questions/${settingsString}`).then(response => {
-      if(response.status !== 200) {
-        throw new Error(response.error)
-      } else {
-      console.log('b')
-      return response.json()}}).then(data => console.log('c', data)).catch(error => console.log('d', error))
-      console.log('e')
-
-    }
+  // the following code was used during live coding for this project's review; saving for later reference
+  // callApi = () => {
+  //   console.log('a')
+  //   const settings = {questionAmount: 1, category: "General Knowledge"}
+  //   const settingsString = JSON.stringify(settings)
+  //   fetch(`/questions/${settingsString}`).then(response => {
+  //     if(response.status !== 200) {
+  //       throw new Error(response.error)
+  //     } else {
+  //     console.log('b')
+  //     return response.json()}}).then(data => console.log('c', data)).catch(error => console.log('d', error))
+  //     console.log('e')
+  //
+  //   }
 
   getAnswers = (answers, handler) =>
     <table className="table-hover" style={{float:"none", margin:"0 auto"}}>
