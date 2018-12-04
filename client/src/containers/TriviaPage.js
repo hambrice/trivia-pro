@@ -20,16 +20,13 @@ class TriviaPage extends React.Component {
       fillerText: "Loading.."
     }
   }
-  // componentDidMount() {
-  //   const { fetchQuestions, settings } = this.props;
-  //
-  //   fetchQuestions(settings);
-  // }
 
   shuffleAnswers = question => {
+
     const answers = [question.correct_answer, ...JSON.parse(question.incorrect_answers)];
 
     for (let i = answers.length - 1; i > 0; i--) {
+
         const j = Math.floor(Math.random() * (i + 1));
         [answers[i], answers[j]] = [answers[j], answers[i]];
     }
@@ -40,13 +37,18 @@ class TriviaPage extends React.Component {
   findAnswer = answer => answer === this.props.currentQuestion.correct_answer;
 
   handleAnswerClick = event => {
+
     const { correctCount, renderResult, incorrectCount } = this.state;
+
     if (!renderResult) {
+
       if (this.findAnswer(event.target.innerText)) {
+
         this.setState({
           renderResult: 'correct',
           correctCount: correctCount + 1
         })
+
       } else {
 
           this.setState({
@@ -59,21 +61,31 @@ class TriviaPage extends React.Component {
   }
 
   handleNextClick = event => {
+
     this.props.nextQuestion(this.state.questionNumber)
+
     this.setState({
       renderResult: null,
       fillerText: "Game Over!",
       questionNumber: this.state.questionNumber + 1
     })
   }
+
   renderResults = () => {
+
     switch(this.state.renderResult){
+
       case 'correct':
       return( <Response response="Correct!" handleNextClick={this.handleNextClick}/>
         )
+
       case 'incorrect':
       return(
-        <Response response="Incorrect" answer={this.props.currentQuestion.correct_answer} handleNextClick={this.handleNextClick}/>
+        <Response
+          response="Incorrect"
+          answer={this.props.currentQuestion.correct_answer}
+          handleNextClick={this.handleNextClick}
+        />
       )
 
     }
@@ -84,8 +96,10 @@ class TriviaPage extends React.Component {
   }
 
   startOver = () => {
+
     const { fetchQuestions, settings } = this.props;
     fetchQuestions(settings);
+
     this.setState({
       correctCount: 0,
       incorrectCount: 0,

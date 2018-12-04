@@ -1731,6 +1731,7 @@ pre code {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+
 .table-hover tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.075);
   color: #2AA198;

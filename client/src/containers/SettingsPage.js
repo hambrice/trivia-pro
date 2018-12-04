@@ -29,7 +29,11 @@ class SettingsPage extends React.Component{
   render() {
     return(
       <div className="card border-success mb-3 col-sml-2 stats" style={{minWidth: "50%", margin: "2.5rem", padding: "2rem"}}>
-        <SettingsForm handleSubmitClick={ this.handleSubmitClick } onChange={ this.handleChange } redirect={this.redirectToGame}/>
+        <SettingsForm
+          handleSubmitClick={ this.handleSubmitClick }
+          onChange={ this.handleChange }
+          redirect={ this.redirectToGame }
+        />
       </div>
     );
   }
